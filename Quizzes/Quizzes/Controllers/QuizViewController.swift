@@ -8,13 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class QuizViewController: UIViewController {
+    
+    let quizView = QuizView()
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = .white
+    view.addSubview(quizView)
+    
   }
 
 
 }
+
 

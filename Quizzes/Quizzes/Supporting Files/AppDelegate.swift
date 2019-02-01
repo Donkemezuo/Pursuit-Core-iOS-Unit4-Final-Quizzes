@@ -15,7 +15,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    
+    let quizVC = QuizViewController()
+    let searchVC = SearchViewController()
+    let createVC = CreateViewController()
+    let profileVC = ProfileViewController()
+    let quizNavVC = UINavigationController.init(rootViewController: quizVC)
+    let searchNavVC = UINavigationController.init(rootViewController: searchVC)
+    let createNavVc = UINavigationController.init(rootViewController: createVC)
+    let profileNav = UINavigationController.init(rootViewController: profileVC)
+    
+    let tabBar = UITabBarController()
+    tabBar.viewControllers = [quizNavVC,searchNavVC,createNavVc,profileNav]
+    window = UIWindow.init(frame: UIScreen.main.bounds)
+    window?.makeKeyAndVisible()
+    window?.rootViewController =  tabBar
+    
+    quizVC.title = "Quiz"
+    searchVC.title = "Search"
+    createVC.title = "Create"
+    profileVC.title = "Profile"
+    quizNavVC.tabBarItem = UITabBarItem.init(title: "Quiz", image: UIImage.init(named: "icons8-ask_question"), selectedImage: UIImage.init(named: "icons8-ask_question"))
+    searchNavVC.tabBarItem = UITabBarItem.init(title: "Search", image: UIImage.init(named: "icons8-search"), selectedImage: UIImage.init(named: "icons8-search"))
+    createNavVc.tabBarItem = UITabBarItem.init(title: "Create", image: UIImage.init(named: "icons8-create_new"), selectedImage: UIImage.init(named: "icons8-create_new"))
+    profileNav.tabBarItem = UITabBarItem.init(title: "Profile", image:UIImage.init(named: "profile-unfilled"), selectedImage: UIImage.init(named: "profile-unfilled"))
+    
+    
     return true
   }
 
