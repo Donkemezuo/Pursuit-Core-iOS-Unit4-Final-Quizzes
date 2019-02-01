@@ -9,24 +9,31 @@
 import UIKit
 
 class CreateViewController: UIViewController {
+    let createQuizView = CreateQuizView()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        //self.view.addSubview(<#T##view: UIView##UIView#>)
+        self.view.addSubview(createQuizView)
+        setupNavBarItems()
+        
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupNavBarItems(){
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Create", style: .plain, target: self, action: #selector(createButtonClicked))
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
     }
-    */
+    
+    @objc func createButtonClicked(){
+        
+    }
+    
+    @objc func cancelButtonPressed(){
+        dismiss(animated: true, completion: nil)
+       //present(QuizViewController(), animated: true, completion: nil)
+    }
+    
 
 }

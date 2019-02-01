@@ -1,5 +1,5 @@
 //
-//  ProfileView.swift
+//  DetailView.swift
 //  Quizzes
 //
 //  Created by Donkemezuo Raymond Tariladou on 2/1/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileView: UIView {
+class DetailView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

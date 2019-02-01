@@ -10,8 +10,8 @@ import UIKit
 
 class QuizView: UIView {
 
-    private lazy var collectionView: UICollectionView = {
-        
+    public lazy var collectionView: UICollectionView = {
+    
         let cellLayout = UICollectionViewFlowLayout()
         cellLayout.scrollDirection = .vertical
         cellLayout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
@@ -28,6 +28,7 @@ class QuizView: UIView {
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInt()
+        self.collectionView.register(QuizCollectionViewCell.self, forCellWithReuseIdentifier: "QuizCell")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,7 +41,7 @@ class QuizView: UIView {
         
     }
 
-    func setConstrains(){
+    private func setConstrains(){
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraint(equalTo:topAnchor, constant: 0).isActive = true
