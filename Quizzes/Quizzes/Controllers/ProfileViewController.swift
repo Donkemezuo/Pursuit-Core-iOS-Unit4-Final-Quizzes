@@ -8,23 +8,21 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITextFieldDelegate {
+    class ProfileViewController: UIViewController, UITextFieldDelegate {
     var username: String?
 
     let profileView = ProfileView()
      private var imagepickerVC:UIImagePickerController!
     
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.red.withAlphaComponent(0.3)
         self.view.addSubview(profileView)
         setUpAlertController()
-        self.profileView.imageButton.addTarget(self, action: #selector(setProfilePicture), for: .touchUpInside)
-       
-        
+        self.profileView.imageButton.addTarget(self, action: #selector(setImageAlertController), for: .touchUpInside)
+            userDefault()
 }
-    
-    @objc func setProfilePicture(){
+        @objc func setProfilePicture(){
         imagepickerVC = UIImagePickerController()
         imagepickerVC.delegate = self
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -33,8 +31,24 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         present(imagepickerVC, animated: true, completion: nil)
         
     }
-
-    func setUpAlertController(){
+    
+        @objc func setImageAlertController(){
+        
+        let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
+        let PhotoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (alert: UIAlertAction) in
+            self.setProfilePicture()
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
+            self.dismiss(animated: true , completion: nil)
+        }
+        alert.addAction(PhotoLibrary)
+        alert.addAction(cancel)
+         present(alert, animated: true, completion: nil)
+        
+    }
+    
+        func setUpAlertController(){
         let alertController = UIAlertController(title: "Please enter your user name", message: "No space allowed or special characters", preferredStyle: .alert)
         alertController.addTextField { (textfield) in
             textfield.font = UIFont.boldSystemFont(ofSize: 20)
@@ -48,16 +62,30 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             self.profileView.userNameLabel.text = userName
+            
+            UserDefaults.standard.set(userName, forKey: userDefaultKeys.DefaultSearchKey)
         }
         alertController.addAction(cancel)
         alertController.addAction(submit)
         present(alertController, animated: true, completion: nil)
     }
-    
-  
+        
+        private func userDefault(){
+            if let defaultUsername = UserDefaults.standard.object(forKey: userDefaultKeys.DefaultSearchKey) as? String {
+                
+                self.profileView.imageButton.addTarget(self, action: #selector(setImageAlertController), for: .touchUpInside)
+                self.profileView.userNameLabel.text = defaultUsername
+                
+            } else {
+                
+            }
+        }
+        
+        
+        
 }
 
-extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }

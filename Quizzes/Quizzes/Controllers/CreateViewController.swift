@@ -17,8 +17,6 @@ class CreateViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.addSubview(createQuizView)
         setupNavBarItems()
-        
-        // Do any additional setup after loading the view.
     }
     
     private func setupNavBarItems(){
@@ -32,7 +30,6 @@ class CreateViewController: UIViewController {
     
     @objc func cancelButtonPressed(){
         dismiss(animated: true, completion: nil)
-       //present(QuizViewController(), animated: true, completion: nil)
     }
     
 

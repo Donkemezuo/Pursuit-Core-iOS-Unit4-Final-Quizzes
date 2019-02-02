@@ -24,14 +24,12 @@ class QuizCollectionViewCell: UICollectionViewCell {
         return OptionsButton
         
     }()
-    
-    
     public lazy var label: UILabel = {
         let quizTitle = UILabel()
-        quizTitle.font = UIFont.boldSystemFont(ofSize: 30)
+        quizTitle.font = UIFont.boldSystemFont(ofSize: 20)
         quizTitle.numberOfLines = 0
         quizTitle.backgroundColor = UIColor.blue.withAlphaComponent(0.1)
-        quizTitle.text = "Yes we made it here son"
+        quizTitle.text = "Yes we made"
         return quizTitle
         
     }()
@@ -50,11 +48,11 @@ class QuizCollectionViewCell: UICollectionViewCell {
         addSubview(label)
         button.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        button.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
-        button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 260).isActive = true
-        button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
+        button.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 140).isActive = true
         label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        label.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 70).isActive = true
+        label.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
         
         
     }

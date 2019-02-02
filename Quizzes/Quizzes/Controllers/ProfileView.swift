@@ -9,8 +9,6 @@
 import UIKit
 
 class ProfileView: UIView {
-   
-    
     public lazy var label: UILabel = {
         let label = UILabel()
         label.text = "EDIT PHOTO"
@@ -34,6 +32,7 @@ class ProfileView: UIView {
         profileImageButton.backgroundColor = .green
         profileImageButton.layer.cornerRadius = 30
         profileImageButton.clipsToBounds = true
+     
         return profileImageButton
         
     }()
@@ -63,6 +62,8 @@ class ProfileView: UIView {
         setConstrains()
         
     }
+    
+ 
     
     private func setConstrains(){
         addSubview(label)
