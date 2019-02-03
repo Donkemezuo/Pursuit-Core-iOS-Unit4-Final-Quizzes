@@ -19,8 +19,7 @@ class QuizCollectionViewCell: UICollectionViewCell {
         let OptionsButton = UIButton()
             OptionsButton.setTitle("...", for:.normal)
             OptionsButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
-        OptionsButton.addTarget(self, action: #selector(alertController), for: .touchUpInside)
-        
+            OptionsButton.addTarget(self, action: #selector(alertController), for: .touchUpInside)
         return OptionsButton
         
     }()

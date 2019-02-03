@@ -25,9 +25,7 @@ class QuizViewController: UIViewController, AlertControllerDelegate {
     func presentAlertControllerAlertSheet(view: UIAlertController) {
         self.present(view, animated: true, completion: nil)
     }
-
 }
-
 extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dummyQuizes.count
@@ -38,16 +36,14 @@ extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.backgroundColor = UIColor.green.withAlphaComponent(0.3)
         let quiz = dummyQuizes[indexPath.row]
         cell.label.text = quiz
+        cell.layer.borderWidth = 2
         return cell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
          let quizz = dummyQuizes[indexPath.row]
         let detailVC = DetailedViewController(quiz: quizz)
         self.navigationController?.pushViewController(detailVC, animated: true)
-        
-        //detailVC.detailView.collectionView
     }
     
     

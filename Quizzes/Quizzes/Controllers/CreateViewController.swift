@@ -26,11 +26,32 @@ class CreateViewController: UIViewController {
     
     @objc func createButtonClicked(){
         
+        print(self.createQuizView.textField.text)
+        print(self.createQuizView.textFieldSecond.text)
+        print(self.createQuizView.textViewFirst.text)
+        
+        if self.createQuizView.textField.text == nil && self.createQuizView.textViewFirst.text == nil && self.createQuizView.textFieldSecond.text == nil {
+            
+            let alert = UIAlertController(title: "", message: "All field must be filled", preferredStyle: .alert)
+            let okay = UIAlertAction(title: "Okay", style: .cancel) { (alert: UIAlertAction) in
+            }
+            alert.addAction(okay)
+            present(alert, animated: true , completion: nil)
+            
+        } else {
+            
+        }
     }
+        
+    
+        
+    
+    
     
     @objc func cancelButtonPressed(){
         dismiss(animated: true, completion: nil)
     }
     
-
+  
+    
 }

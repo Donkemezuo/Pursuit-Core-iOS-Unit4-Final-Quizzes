@@ -18,6 +18,12 @@
 		0404FBB02204FA3000F81B3B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404FBAF2204FA3000F81B3B /* DetailView.swift */; };
 		0404FBB222051E4500F81B3B /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404FBB122051E4500F81B3B /* UserDefaultKeys.swift */; };
 		04C2F619220536FC009904DD /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2F618220536FC009904DD /* DetailedViewController.swift */; };
+		04C2F61B220687F1009904DD /* DetailViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2F61A220687F1009904DD /* DetailViewCollectionViewCell.swift */; };
+		04C2F61D220699EF009904DD /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2F61C220699EF009904DD /* SearchCollectionViewCell.swift */; };
+		04C2F61F220767CA009904DD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2F61E220767CA009904DD /* Model.swift */; };
+		04C2F62122076987009904DD /* QuizAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2F62022076987009904DD /* QuizAPIClient.swift */; };
+		04C2F62322077394009904DD /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2F62222077394009904DD /* Quiz.swift */; };
+		04C2F62522077469009904DD /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2F62422077469009904DD /* QuizModel.swift */; };
 		577118C12203796A00B9DD0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577118C02203796A00B9DD0B /* AppDelegate.swift */; };
 		577118C32203796A00B9DD0B /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577118C22203796A00B9DD0B /* QuizViewController.swift */; };
 		577118C82203796B00B9DD0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 577118C72203796B00B9DD0B /* Assets.xcassets */; };
@@ -41,6 +47,12 @@
 		0404FBAF2204FA3000F81B3B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailView.swift; path = ../Controllers/DetailView.swift; sourceTree = "<group>"; };
 		0404FBB122051E4500F81B3B /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		04C2F618220536FC009904DD /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		04C2F61A220687F1009904DD /* DetailViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		04C2F61C220699EF009904DD /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		04C2F61E220767CA009904DD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		04C2F62022076987009904DD /* QuizAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAPIClient.swift; sourceTree = "<group>"; };
+		04C2F62222077394009904DD /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		04C2F62422077469009904DD /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		577118BD2203796A00B9DD0B /* Quizzes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quizzes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		577118C02203796A00B9DD0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		577118C22203796A00B9DD0B /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
@@ -83,9 +95,9 @@
 			children = (
 				0404FBAF2204FA3000F81B3B /* DetailView.swift */,
 				0404FB9F2204A52900F81B3B /* QuizView.swift */,
+				0404FBAB2204CD7D00F81B3B /* ProfileView.swift */,
 				0404FBA12204A54200F81B3B /* SearchView.swift */,
 				0404FBA32204A55D00F81B3B /* CreateQuizView.swift */,
-				0404FBAB2204CD7D00F81B3B /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -93,6 +105,8 @@
 		0404FB9E2204A4B900F81B3B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04C2F61E220767CA009904DD /* Model.swift */,
+				04C2F62222077394009904DD /* Quiz.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				0404FBA92204B1FA00F81B3B /* QuizCollectionViewCell.swift */,
+				04C2F61A220687F1009904DD /* DetailViewCollectionViewCell.swift */,
+				04C2F61C220699EF009904DD /* SearchCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -108,6 +124,8 @@
 		577118B42203796A00B9DD0B = {
 			isa = PBXGroup;
 			children = (
+				04C2F62422077469009904DD /* QuizModel.swift */,
+				04C2F62022076987009904DD /* QuizAPIClient.swift */,
 				577118BF2203796A00B9DD0B /* Quizzes */,
 				577118BE2203796A00B9DD0B /* Products */,
 			);
@@ -243,7 +261,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C2F61F220767CA009904DD /* Model.swift in Sources */,
+				04C2F61B220687F1009904DD /* DetailViewCollectionViewCell.swift in Sources */,
+				04C2F62122076987009904DD /* QuizAPIClient.swift in Sources */,
 				0404FBAA2204B1FA00F81B3B /* QuizCollectionViewCell.swift in Sources */,
+				04C2F62522077469009904DD /* QuizModel.swift in Sources */,
 				577118D722037ABA00B9DD0B /* NetworkHelper.swift in Sources */,
 				577118C32203796A00B9DD0B /* QuizViewController.swift in Sources */,
 				0404FBA02204A52900F81B3B /* QuizView.swift in Sources */,
@@ -256,6 +278,8 @@
 				577118C12203796A00B9DD0B /* AppDelegate.swift in Sources */,
 				0404FBB222051E4500F81B3B /* UserDefaultKeys.swift in Sources */,
 				577118D522037A9F00B9DD0B /* AppError.swift in Sources */,
+				04C2F62322077394009904DD /* Quiz.swift in Sources */,
+				04C2F61D220699EF009904DD /* SearchCollectionViewCell.swift in Sources */,
 				0404FBA42204A55D00F81B3B /* CreateQuizView.swift in Sources */,
 				04C2F619220536FC009904DD /* DetailedViewController.swift in Sources */,
 				577118DA22037B5B00B9DD0B /* DataPersistenceManager.swift in Sources */,

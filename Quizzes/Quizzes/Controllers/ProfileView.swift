@@ -25,7 +25,6 @@ class ProfileView: UIView {
         
     }()
     
-    
     public lazy var imageButton: UIButton = {
         let profileImageButton = UIButton()
         profileImageButton.setBackgroundImage(UIImage.init(named: "placeholder-image"), for: .normal)
@@ -92,10 +91,6 @@ class ProfileView: UIView {
         userNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         userNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         userNameLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.03).isActive = true
-        
-        
-        
-        
         
     }
 
