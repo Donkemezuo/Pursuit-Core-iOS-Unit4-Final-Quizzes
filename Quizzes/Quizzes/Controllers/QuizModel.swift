@@ -14,18 +14,19 @@ final class QuizModel {
     
     static func saveQuiz(){
     let path = DataPersistenceManager.filepathToDocumentsDiretory(filename:filename)
+        print(path)
         do {
     let data = try PropertyListEncoder().encode(savedQuizzes)
             try data.write(to: path, options: Data.WritingOptions.atomic)
         } catch {
             print("error encountered while encoding data")
         }
-    
 }
     static func getSavedQuizzez() -> [Quiz] {
         
 let path = DataPersistenceManager.filepathToDocumentsDiretory(filename: filename).path
         if FileManager.default.fileExists(atPath: path) {
+            print(path)
             if let data = FileManager.default.contents(atPath: path) {
                 do {
         savedQuizzes = try PropertyListDecoder().decode([Quiz].self, from: data)
@@ -38,16 +39,13 @@ let path = DataPersistenceManager.filepathToDocumentsDiretory(filename: filename
             }
         } else {
             print("\(filename) does not exist")
-
         }
         return savedQuizzes
     }
-    
     static func save(Quiz:Quiz){
         savedQuizzes.append(Quiz)
-        
+        saveQuiz()
     }
-    
     static func delete(index: Int){
         savedQuizzes.remove(at: index)
         saveQuiz()

@@ -25,21 +25,26 @@ class QuizCollectionViewCell: UICollectionViewCell {
     }()
     public lazy var label: UILabel = {
         let quizTitle = UILabel()
-        quizTitle.font = UIFont.boldSystemFont(ofSize: 20)
+        quizTitle.font = UIFont.boldSystemFont(ofSize: 12)
         quizTitle.numberOfLines = 0
         quizTitle.backgroundColor = UIColor.blue.withAlphaComponent(0.1)
-        quizTitle.text = "Yes we made"
+        quizTitle.textAlignment = .center
         return quizTitle
-        
     }()
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
-        setCollectionViewCell()
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    private func commonInit(){
+        setCollectionViewCell()
+
     }
     
     func setCollectionViewCell(){
@@ -47,11 +52,12 @@ class QuizCollectionViewCell: UICollectionViewCell {
         addSubview(label)
         button.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        button.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
-        button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 140).isActive = true
-        label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
+        label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
         label.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
+        button.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
+        button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 150).isActive = true
         
         
     }

@@ -10,7 +10,6 @@ import UIKit
 
     class ProfileViewController: UIViewController, UITextFieldDelegate {
     var username: String?
-
     let profileView = ProfileView()
      private var imagepickerVC:UIImagePickerController!
     
@@ -33,26 +32,23 @@ import UIKit
     }
     
         @objc func setImageAlertController(){
-        
         let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
         let PhotoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (alert: UIAlertAction) in
             self.setProfilePicture()
         }
-        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
             self.dismiss(animated: true , completion: nil)
         }
         alert.addAction(PhotoLibrary)
         alert.addAction(cancel)
          present(alert, animated: true, completion: nil)
-        
     }
-    
         func setUpAlertController(){
         let alertController = UIAlertController(title: "Please enter your user name", message: "No space allowed or special characters", preferredStyle: .alert)
         alertController.addTextField { (textfield) in
             textfield.font = UIFont.boldSystemFont(ofSize: 20)
             textfield.layer.cornerRadius = 10.0
+            
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (alert: UIAlertAction) in
             self.dismiss(animated: true, completion: nil)
@@ -62,29 +58,32 @@ import UIKit
                 return
             }
             self.profileView.userNameLabel.text = userName
-            
             UserDefaults.standard.set(userName, forKey: userDefaultKeys.DefaultSearchKey)
+             self.setupNotification(name: userName)
+        
         }
         alertController.addAction(cancel)
         alertController.addAction(submit)
         present(alertController, animated: true, completion: nil)
     }
-        
+
+        func setupNotification(name: String){
+             let alertController = UIAlertController(title: "", message: "Hi \(name) thank you for logging in", preferredStyle: .alert)
+            let done = UIAlertAction(title: "Okay", style: .cancel) { (alert: UIAlertAction) in
+                self.dismiss(animated: true, completion: nil)
+        }
+            alertController.addAction(done)
+            present(alertController, animated: true, completion: nil)
+        }
         private func userDefault(){
             if let defaultUsername = UserDefaults.standard.object(forKey: userDefaultKeys.DefaultSearchKey) as? String {
-                
                 self.profileView.imageButton.addTarget(self, action: #selector(setImageAlertController), for: .touchUpInside)
                 self.profileView.userNameLabel.text = defaultUsername
-                
             } else {
                 
             }
         }
-        
-        
-        
-}
-
+    }
     extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)

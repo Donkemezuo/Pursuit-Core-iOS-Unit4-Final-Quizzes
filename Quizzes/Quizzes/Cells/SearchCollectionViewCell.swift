@@ -8,7 +8,17 @@
 
 import UIKit
 
+protocol NotificationDelegate: AnyObject {
+    func presentAlertControllerShert(view: UIAlertController)
+    func SearchVC(viewController: UIViewController)
+}
+
 class SearchCollectionViewCell: UICollectionViewCell {
+    
+    var delegate: NotificationDelegate?
+    var quizDetails:QuizQuestionAndAnswers!
+    
+    
     public lazy var addIcon: UIButton = {
         let addButton = UIButton()
         addButton.setImage(UIImage.init(named: "icons8-cross"), for: .normal)
@@ -37,10 +47,22 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     
     @objc func save(){
-     
-        
+        let searchVC = UIViewController()
+        guard label.text != nil else {return}
+        let selectedQuiz = Quiz.init(facts: quizDetails.facts, id: quizDetails.id, quizTitle: quizDetails.quizTitle)
+        QuizModel.save(Quiz: selectedQuiz)
+        self.delegate?.SearchVC(viewController: searchVC)
+        userNotification()
     }
 
+    func userNotification(){
+        let alert = UIAlertController(title: "", message: "Success", preferredStyle: .alert)
+        let okay = UIAlertAction.init(title: "Thank", style: .default) { (alert: UIAlertAction) in
+        }
+        alert.addAction(okay)
+        delegate?.presentAlertControllerShert(view: alert)
+    
+    }
     
     private func  setConstrains() {
         addSubview(addIcon)

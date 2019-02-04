@@ -9,19 +9,16 @@
 import UIKit
 
 class DetailedViewController: UIViewController {
-    
-    var quiz: String!
-    
+    var quiz: Quiz!
     let detailView = DetailView()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(detailView)
         self.view.backgroundColor = UIColor.green.withAlphaComponent(1.0)
-        
         detailView.collectionView.delegate = self
         detailView.collectionView.dataSource = self
     }
-    init(quiz: String){
+    init(quiz: Quiz){
         super.init(nibName: nil, bundle: nil)
         self.quiz = quiz
     }
@@ -29,21 +26,18 @@ class DetailedViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 }
-
 extension DetailedViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return quiz.facts.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 guard let cell = detailView.collectionView.dequeueReusableCell(withReuseIdentifier: "DetailViewCell", for: indexPath) as? DetailViewCollectionViewCell else {return UICollectionViewCell()}
     cell.backgroundColor = UIColor.green.withAlphaComponent(0.2)
-        cell.firstFactTextView.text = "Raymond The legend"
+      let fact =  quiz.facts[indexPath.row]
+        cell.firstFactTextView.text = fact
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let cell = collectionView.cellForItem(at: indexPath) as! DetailViewCollectionViewCell
         cell.flipFacts()
         
