@@ -41,7 +41,8 @@ class SearchCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     @objc func save(){
-        let selectedQuiz = Quiz.init(facts: self.quizDetails.facts, id: self.quizDetails.id, quizTitle: self.quizDetails.quizTitle)
+        guard let userName = UserDefaults.standard.string(forKey: userDefaultKeys.DefaultSearchKey) else {return}
+        let selectedQuiz = Quiz.init(facts: self.quizDetails.facts, id: self.quizDetails.id, quizTitle: self.quizDetails.quizTitle, userName: userName)
         QuizModel.save(Quiz: selectedQuiz)
         delegate?.didSaveQuiz()
     }

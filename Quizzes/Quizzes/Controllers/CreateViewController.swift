@@ -46,8 +46,9 @@ class CreateViewController: UIViewController {
             AtleastOneRequiredFilling()
         } else {
             let facts = [createQuizView.textViewFirst.text, createQuizView.textFieldSecond.text]
+             guard let userName = UserDefaults.standard.string(forKey: userDefaultKeys.DefaultSearchKey) else {return}
             
-            let quizCreatedByUser = Quiz.init(facts: facts as! [String], id: String(id), quizTitle: createQuizView.textField.text!)
+            let quizCreatedByUser = Quiz.init(facts: facts as! [String], id: String(id), quizTitle: createQuizView.textField.text!, userName:userName)
             QuizModel.save(Quiz: quizCreatedByUser)
             savingStatusSuccess()
             

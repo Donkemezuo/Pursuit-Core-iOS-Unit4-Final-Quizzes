@@ -10,4 +10,5 @@ import Foundation
 
 struct userDefaultKeys {
     static let DefaultSearchKey = "Default Search"
+    static let DefaultImageKey = "Default Image"
 }

@@ -10,7 +10,8 @@ import UIKit
 
 class QuizViewController: UIViewController, QuizCollectionViewAlertDelegate {
     func deleteQuiz(index: Int) {
-        let quizes = QuizModel.getSavedQuizzez()[index]
+         guard let userName = UserDefaults.standard.string(forKey: userDefaultKeys.DefaultSearchKey) else {return}
+        let quizes = QuizModel.getSavedQuizzez(username: userName)
         QuizModel.delete(savedQuiz:quizes, index: index)
         self.quizView.collectionView.reloadData()
     }
@@ -20,7 +21,8 @@ class QuizViewController: UIViewController, QuizCollectionViewAlertDelegate {
             DispatchQueue.main.async {
                 self.quizView.collectionView.reloadData()
                 self.getData()
-                self.navigationItem.title = "\(self.quizzez.count) Quizzes"
+                guard let userName = UserDefaults.standard.string(forKey: userDefaultKeys.DefaultSearchKey) else {return}
+                self.navigationItem.title = "\(userName) has \(self.quizzez.count) Quizzes"
             }
         }
     }
@@ -32,10 +34,12 @@ class QuizViewController: UIViewController, QuizCollectionViewAlertDelegate {
     quizView.collectionView.dataSource = self
     quizView.collectionView.delegate = self
     getData()
+    print(DataPersistenceManager.documentsDirectory())
   }
     
     func getData(){
-        quizzez = QuizModel.getSavedQuizzez()
+         guard let userName = UserDefaults.standard.string(forKey: userDefaultKeys.DefaultSearchKey) else {return}
+        quizzez = QuizModel.getSavedQuizzez(username: userName)
     }
     
 func presentAlertControllerAlertSheet(view: UIAlertController) {

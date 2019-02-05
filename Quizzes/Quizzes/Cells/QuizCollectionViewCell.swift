@@ -65,6 +65,7 @@ class QuizCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func alertController(){
+        print(self.button.tag)
         let alert = UIAlertController(title: "Options", message: "Select an option", preferredStyle: .actionSheet)
         let delete = UIAlertAction.init(title: "Delete", style: .destructive) { (alert: UIAlertAction) in
             

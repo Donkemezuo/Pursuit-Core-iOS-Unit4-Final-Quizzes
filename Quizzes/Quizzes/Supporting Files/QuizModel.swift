@@ -11,6 +11,7 @@ import Foundation
 final class QuizModel {
     private static let filename = "SavedQuizzes.plist"
     private static var savedQuizzes = [Quiz]()
+    private static var quizzesFilteredByUsername = [Quiz]()
     
     static func saveQuiz(){
     let path = DataPersistenceManager.filepathToDocumentsDiretory(filename:filename)
@@ -21,7 +22,7 @@ final class QuizModel {
             print("error encountered while encoding data")
         }
 }
-    static func getSavedQuizzez() -> [Quiz] {
+    static func getSavedQuizzez(username: String) -> [Quiz] {
         
 let path = DataPersistenceManager.filepathToDocumentsDiretory(filename: filename).path
         if FileManager.default.fileExists(atPath: path) {
@@ -39,14 +40,26 @@ let path = DataPersistenceManager.filepathToDocumentsDiretory(filename: filename
         } else {
             print("\(filename) does not exist")
         }
-        return savedQuizzes
+        
+        quizzesFilteredByUsername = savedQuizzes.filter{$0.userName == username}
+        
+        return quizzesFilteredByUsername
     }
     static func save(Quiz:Quiz){
         savedQuizzes.append(Quiz)
         saveQuiz()
     }
-    static func delete(savedQuiz:Quiz ,index: Int){
-        savedQuizzes.remove(at: index)
+    static func delete(savedQuiz:[Quiz] ,index: Int){
+        var num = Int()
+        
+        for quizIndex in 0...savedQuizzes.count - 1{
+            if quizzesFilteredByUsername[index].quizTitle == savedQuizzes[quizIndex].quizTitle && quizzesFilteredByUsername[index].userName == savedQuizzes[quizIndex].userName {
+                num = quizIndex
+            }
+        }
+        
+        quizzesFilteredByUsername.remove(at: index)
+        savedQuizzes.remove(at: num)
         saveQuiz()
     
     
