@@ -9,15 +9,12 @@
 import UIKit
 
 protocol NotificationDelegate: AnyObject {
-    func presentAlertControllerShert(view: UIAlertController)
-    func SearchVC(viewController: UIViewController)
+    func didSaveQuiz()
 }
 
 class SearchCollectionViewCell: UICollectionViewCell {
-    
     var delegate: NotificationDelegate?
     var quizDetails:QuizQuestionAndAnswers!
-    
     
     public lazy var addIcon: UIButton = {
         let addButton = UIButton()
@@ -35,7 +32,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
         return title
         
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         setConstrains()
@@ -44,24 +40,10 @@ class SearchCollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    
     @objc func save(){
-        let searchVC = UIViewController()
-        guard label.text != nil else {return}
-        let selectedQuiz = Quiz.init(facts: quizDetails.facts, id: quizDetails.id, quizTitle: quizDetails.quizTitle)
+        let selectedQuiz = Quiz.init(facts: self.quizDetails.facts, id: self.quizDetails.id, quizTitle: self.quizDetails.quizTitle)
         QuizModel.save(Quiz: selectedQuiz)
-        self.delegate?.SearchVC(viewController: searchVC)
-        userNotification()
-    }
-
-    func userNotification(){
-        let alert = UIAlertController(title: "", message: "Success", preferredStyle: .alert)
-        let okay = UIAlertAction.init(title: "Thank", style: .default) { (alert: UIAlertAction) in
-        }
-        alert.addAction(okay)
-        delegate?.presentAlertControllerShert(view: alert)
-    
+        delegate?.didSaveQuiz()
     }
     
     private func  setConstrains() {

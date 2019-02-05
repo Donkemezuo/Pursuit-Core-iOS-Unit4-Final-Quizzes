@@ -18,7 +18,7 @@ class DetailView: UIView {
         cellLayout.itemSize = CGSize.init(width: 350, height: 350)
         
         let detailedCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: cellLayout)
-            detailedCollectionView.backgroundColor = UIColor.red.withAlphaComponent(0.2)
+            detailedCollectionView.backgroundColor = UIColor.brown.withAlphaComponent(0.8)
         
         return detailedCollectionView
         

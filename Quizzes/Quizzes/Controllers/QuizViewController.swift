@@ -8,17 +8,21 @@
 
 import UIKit
 
-class QuizViewController: UIViewController, AlertControllerDelegate {
-    
+class QuizViewController: UIViewController, QuizCollectionViewAlertDelegate {
+    func deleteQuiz(index: Int) {
+        let quizes = QuizModel.getSavedQuizzez()[index]
+        QuizModel.delete(savedQuiz:quizes, index: index)
+        self.quizView.collectionView.reloadData()
+    }
     let quizView = QuizView()
     var quizzez = [Quiz]() {
         didSet {
             DispatchQueue.main.async {
                 self.quizView.collectionView.reloadData()
                 self.getData()
+                self.navigationItem.title = "\(self.quizzez.count) Quizzes"
             }
         }
-        
     }
     
   override func viewDidLoad() {
@@ -28,14 +32,13 @@ class QuizViewController: UIViewController, AlertControllerDelegate {
     quizView.collectionView.dataSource = self
     quizView.collectionView.delegate = self
     getData()
-    
   }
     
     func getData(){
         quizzez = QuizModel.getSavedQuizzez()
     }
     
-    func presentAlertControllerAlertSheet(view: UIAlertController) {
+func presentAlertControllerAlertSheet(view: UIAlertController) {
         self.present(view, animated: true, completion: nil)
     }
 }
@@ -49,7 +52,8 @@ extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.backgroundColor = UIColor.green.withAlphaComponent(0.3)
         let quiz = quizzez[indexPath.row]
         cell.label.text = quiz.quizTitle
-        cell.layer.borderWidth = 2
+        cell.button.tag = indexPath.row
+        cell.layer.borderWidth = 4
         return cell
     }
     

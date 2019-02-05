@@ -26,7 +26,6 @@ class CreateQuizView: UIView {
         var firstQuizFactTextView = UITextView()
             firstQuizFactTextView.backgroundColor = UIColor.red.withAlphaComponent(0.2)
             firstQuizFactTextView.font = UIFont.boldSystemFont(ofSize: 20)
-            firstQuizFactTextView.text = "Enter first quiz facts"
             firstQuizFactTextView.textColor = UIColor.lightGray
             firstQuizFactTextView.layer.cornerRadius = 10.0
         return firstQuizFactTextView
@@ -36,7 +35,6 @@ class CreateQuizView: UIView {
         var secondQuizFactTextView = UITextView()
         secondQuizFactTextView.backgroundColor = UIColor.red.withAlphaComponent(0.2)
         secondQuizFactTextView.font = UIFont.boldSystemFont(ofSize: 20)
-        secondQuizFactTextView.text = "Enter second quiz facts"
         secondQuizFactTextView.textColor = UIColor.lightGray
         secondQuizFactTextView.layer.cornerRadius = 10.0
         

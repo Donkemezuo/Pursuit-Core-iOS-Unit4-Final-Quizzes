@@ -8,18 +8,20 @@
 
 import UIKit
 
-protocol AlertControllerDelegate: AnyObject {
+protocol QuizCollectionViewAlertDelegate: AnyObject {
     func presentAlertControllerAlertSheet(view: UIAlertController)
-}
+    func deleteQuiz(index: Int)
 
+}
 class QuizCollectionViewCell: UICollectionViewCell {
-    weak var delegate: AlertControllerDelegate! = nil
+    weak var delegate: QuizCollectionViewAlertDelegate?
     
     public lazy var button: UIButton = {
         let OptionsButton = UIButton()
             OptionsButton.setTitle("...", for:.normal)
             OptionsButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
             OptionsButton.addTarget(self, action: #selector(alertController), for: .touchUpInside)
+        
         return OptionsButton
         
     }()
@@ -29,6 +31,7 @@ class QuizCollectionViewCell: UICollectionViewCell {
         quizTitle.numberOfLines = 0
         quizTitle.backgroundColor = UIColor.blue.withAlphaComponent(0.1)
         quizTitle.textAlignment = .center
+        
         return quizTitle
     }()
     
@@ -46,7 +49,6 @@ class QuizCollectionViewCell: UICollectionViewCell {
         setCollectionViewCell()
 
     }
-    
     func setCollectionViewCell(){
         addSubview(button)
         addSubview(label)
@@ -66,15 +68,16 @@ class QuizCollectionViewCell: UICollectionViewCell {
         let alert = UIAlertController(title: "Options", message: "Select an option", preferredStyle: .actionSheet)
         let delete = UIAlertAction.init(title: "Delete", style: .destructive) { (alert: UIAlertAction) in
             
+            self.delegate?.deleteQuiz(index: self.button.tag)
+
         }
         
         let cancel = UIAlertAction.init(title: "Cancel", style: .cancel) { (alert: UIAlertAction) in
-            
         }
         
         alert.addAction(delete)
         alert.addAction(cancel)
-        delegate.presentAlertControllerAlertSheet(view: alert)
+        self.delegate?.presentAlertControllerAlertSheet(view: alert)
         
     }
     

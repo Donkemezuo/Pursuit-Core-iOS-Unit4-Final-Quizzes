@@ -80,12 +80,9 @@
 		0404FB9B2204A45800F81B3B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				04C2F62422077469009904DD /* QuizModel.swift */,
-				04C2F62022076987009904DD /* QuizAPIClient.swift */,
 				0404FB942204A41C00F81B3B /* CreateViewController.swift */,
 				04C2F618220536FC009904DD /* DetailedViewController.swift */,
 				0404FB962204A42700F81B3B /* ProfileViewController.swift */,
-				0404FBB122051E4500F81B3B /* UserDefaultKeys.swift */,
 				0404FB922204A41200F81B3B /* SearchViewController.swift */,
 				577118C22203796A00B9DD0B /* QuizViewController.swift */,
 			);
@@ -167,6 +164,9 @@
 		577118D322037A7300B9DD0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04C2F62022076987009904DD /* QuizAPIClient.swift */,
+				04C2F62422077469009904DD /* QuizModel.swift */,
+				0404FBB122051E4500F81B3B /* UserDefaultKeys.swift */,
 				577118C02203796A00B9DD0B /* AppDelegate.swift */,
 				577118C72203796B00B9DD0B /* Assets.xcassets */,
 				577118C92203796B00B9DD0B /* LaunchScreen.storyboard */,

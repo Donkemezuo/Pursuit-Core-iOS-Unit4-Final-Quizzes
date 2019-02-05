@@ -32,20 +32,25 @@ class SearchViewController: UIViewController {
                 print("Error: \(error)")
             } else if let data = data {
                 self.quizzez = data
-                 print("There are \(self.quizzez.count) quizzez")
-           
             }
         }
     }
 }
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate, NotificationDelegate {
-    func presentAlertControllerShert(view: UIAlertController) {
-      
-    }
     
-    func SearchVC(viewController: UIViewController) {
+    func didSaveQuiz() {
+        
+    let alert = UIAlertController(title: "", message: "Successfully saved quiz", preferredStyle: .alert)
+          let okay = UIAlertAction.init(title: "Thank you", style: .default) { (alert: UIAlertAction) in
+    
+        }
+        
+        alert.addAction(okay)
+        present(alert, animated: true, completion: nil)
         
     }
+    
+        
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
